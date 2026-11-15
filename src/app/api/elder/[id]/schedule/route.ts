@@ -13,13 +13,10 @@ export async function GET(
 ) {
   try {
     const { id } = await params;
-    console.log('[API] Using repo for elder:', id);
     const repo = await getRepository();
-    console.log('[API] Repo type:', repo.constructor.name);
 
     // Verify elder exists
     const elder = await repo.getPerson(id);
-    console.log('[API] Elder found:', elder);
     if (!elder || elder.role !== 'elder') {
       return NextResponse.json(
         { error: 'not_found', message: getMessage('somethingWentWrong', 'en') },

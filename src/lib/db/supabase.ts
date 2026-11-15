@@ -34,7 +34,6 @@ function getSupabase(): SupabaseClient {
   if (!supabase) {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-    console.log('[Supabase] Initializing client:', { hasUrl: !!url, hasKey: !!key, urlPrefix: url?.slice(0, 30) });
     if (!url || !key) {
       throw new Error('Supabase credentials not configured. Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY');
     }
@@ -239,7 +238,6 @@ export class SupabaseRepository implements Repository {
   // ---- People ----
   async getPerson(id: string): Promise<Person | null> {
     const { data, error } = await this.sb.from('people').select('*').eq('id', id).single();
-    console.log('[SupabaseRepo] getPerson:', { id, hasData: !!data, error: error?.message });
     if (error || !data) return null;
     return mapPersonFromDB(data);
   }
