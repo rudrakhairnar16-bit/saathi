@@ -239,6 +239,7 @@ export class SupabaseRepository implements Repository {
   // ---- People ----
   async getPerson(id: string): Promise<Person | null> {
     const { data, error } = await this.sb.from('people').select('*').eq('id', id).single();
+    console.log('[SupabaseRepo] getPerson:', { id, hasData: !!data, error: error?.message });
     if (error || !data) return null;
     return mapPersonFromDB(data);
   }
