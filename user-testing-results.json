@@ -1,0 +1,1470 @@
+[
+  {
+    "userId": 1,
+    "persona": {
+      "id": 1,
+      "name": "Kamla Ben",
+      "role": "elder",
+      "age": 72,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "hypertension"
+      ]
+    },
+    "task": "Open app and see today's medicines",
+    "success": false,
+    "timeSeconds": 53,
+    "good": [],
+    "bad": [
+      "Unexpected error or slow response"
+    ],
+    "suggestions": [],
+    "severity": "minor"
+  },
+  {
+    "userId": 1,
+    "persona": {
+      "id": 1,
+      "name": "Kamla Ben",
+      "role": "elder",
+      "age": 72,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "hypertension"
+      ]
+    },
+    "task": "Tap \"Taken\" for morning dose",
+    "success": true,
+    "timeSeconds": 67,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 1,
+    "persona": {
+      "id": 1,
+      "name": "Kamla Ben",
+      "role": "elder",
+      "age": 72,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "hypertension"
+      ]
+    },
+    "task": "Tap \"Skipped\" → select reason via voice (Hindi)",
+    "success": false,
+    "timeSeconds": 97,
+    "good": [
+      "Voice recognition worked well for Hindi",
+      "Hindi response anchored to chai routine felt natural",
+      "Skip reason cards (tap) faster than typing",
+      "Response in my language reassuring"
+    ],
+    "bad": [
+      "Voice input failed - had to use tap cards"
+    ],
+    "suggestions": [],
+    "severity": "major"
+  },
+  {
+    "userId": 1,
+    "persona": {
+      "id": 1,
+      "name": "Kamla Ben",
+      "role": "elder",
+      "age": 72,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "hypertension"
+      ]
+    },
+    "task": "Listen to read-aloud of medicine name",
+    "success": false,
+    "timeSeconds": 90,
+    "good": [
+      "Read-aloud clear, good pace",
+      "Helps when glasses not nearby"
+    ],
+    "bad": [
+      "Unexpected error or slow response"
+    ],
+    "suggestions": [],
+    "severity": "minor"
+  },
+  {
+    "userId": 1,
+    "persona": {
+      "id": 1,
+      "name": "Kamla Ben",
+      "role": "elder",
+      "age": 72,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "hypertension"
+      ]
+    },
+    "task": "Switch text size A → A+ → A++",
+    "success": true,
+    "timeSeconds": 51,
+    "good": [
+      "Large touch targets (64px) easy to tap",
+      "Text size toggle clearly visible",
+      "High contrast mode very helpful for vision"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 1,
+    "persona": {
+      "id": 1,
+      "name": "Kamla Ben",
+      "role": "elder",
+      "age": 72,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "hypertension"
+      ]
+    },
+    "task": "Toggle high contrast mode",
+    "success": true,
+    "timeSeconds": 58,
+    "good": [
+      "Large touch targets (64px) easy to tap",
+      "Text size toggle clearly visible",
+      "High contrast mode very helpful for vision"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 1,
+    "persona": {
+      "id": 1,
+      "name": "Kamla Ben",
+      "role": "elder",
+      "age": 72,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "hypertension"
+      ]
+    },
+    "task": "Switch language EN ↔ HI",
+    "success": true,
+    "timeSeconds": 54,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 2,
+    "persona": {
+      "id": 2,
+      "name": "Ramesh Chandra",
+      "role": "elder",
+      "age": 68,
+      "techComfort": "low",
+      "language": "mixed",
+      "conditions": [
+        "hypertension",
+        "arthritis"
+      ]
+    },
+    "task": "Open app and see today's medicines",
+    "success": true,
+    "timeSeconds": 72,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 2,
+    "persona": {
+      "id": 2,
+      "name": "Ramesh Chandra",
+      "role": "elder",
+      "age": 68,
+      "techComfort": "low",
+      "language": "mixed",
+      "conditions": [
+        "hypertension",
+        "arthritis"
+      ]
+    },
+    "task": "Tap \"Taken\" for morning dose",
+    "success": true,
+    "timeSeconds": 73,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 2,
+    "persona": {
+      "id": 2,
+      "name": "Ramesh Chandra",
+      "role": "elder",
+      "age": 68,
+      "techComfort": "low",
+      "language": "mixed",
+      "conditions": [
+        "hypertension",
+        "arthritis"
+      ]
+    },
+    "task": "Tap \"Skipped\" → select reason via voice (Hindi)",
+    "success": true,
+    "timeSeconds": 58,
+    "good": [
+      "Skip reason cards (tap) faster than typing",
+      "Response in my language reassuring"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 2,
+    "persona": {
+      "id": 2,
+      "name": "Ramesh Chandra",
+      "role": "elder",
+      "age": 68,
+      "techComfort": "low",
+      "language": "mixed",
+      "conditions": [
+        "hypertension",
+        "arthritis"
+      ]
+    },
+    "task": "Listen to read-aloud of medicine name",
+    "success": true,
+    "timeSeconds": 72,
+    "good": [
+      "Read-aloud clear, good pace",
+      "Helps when glasses not nearby"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 2,
+    "persona": {
+      "id": 2,
+      "name": "Ramesh Chandra",
+      "role": "elder",
+      "age": 68,
+      "techComfort": "low",
+      "language": "mixed",
+      "conditions": [
+        "hypertension",
+        "arthritis"
+      ]
+    },
+    "task": "Switch text size A → A+ → A++",
+    "success": true,
+    "timeSeconds": 72,
+    "good": [
+      "Large touch targets (64px) easy to tap",
+      "Text size toggle clearly visible",
+      "High contrast mode very helpful for vision"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 2,
+    "persona": {
+      "id": 2,
+      "name": "Ramesh Chandra",
+      "role": "elder",
+      "age": 68,
+      "techComfort": "low",
+      "language": "mixed",
+      "conditions": [
+        "hypertension",
+        "arthritis"
+      ]
+    },
+    "task": "Toggle high contrast mode",
+    "success": true,
+    "timeSeconds": 70,
+    "good": [
+      "Large touch targets (64px) easy to tap",
+      "Text size toggle clearly visible",
+      "High contrast mode very helpful for vision"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 2,
+    "persona": {
+      "id": 2,
+      "name": "Ramesh Chandra",
+      "role": "elder",
+      "age": 68,
+      "techComfort": "low",
+      "language": "mixed",
+      "conditions": [
+        "hypertension",
+        "arthritis"
+      ]
+    },
+    "task": "Switch language EN ↔ HI",
+    "success": true,
+    "timeSeconds": 55,
+    "good": [
+      "Language switch instant, no reload"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 3,
+    "persona": {
+      "id": 3,
+      "name": "Sunita Devi",
+      "role": "elder",
+      "age": 75,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "heart"
+      ]
+    },
+    "task": "Open app and see today's medicines",
+    "success": false,
+    "timeSeconds": 96,
+    "good": [],
+    "bad": [
+      "Unexpected error or slow response"
+    ],
+    "suggestions": [],
+    "severity": "minor"
+  },
+  {
+    "userId": 3,
+    "persona": {
+      "id": 3,
+      "name": "Sunita Devi",
+      "role": "elder",
+      "age": 75,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "heart"
+      ]
+    },
+    "task": "Tap \"Taken\" for morning dose",
+    "success": false,
+    "timeSeconds": 85,
+    "good": [],
+    "bad": [
+      "Unexpected error or slow response"
+    ],
+    "suggestions": [],
+    "severity": "minor"
+  },
+  {
+    "userId": 3,
+    "persona": {
+      "id": 3,
+      "name": "Sunita Devi",
+      "role": "elder",
+      "age": 75,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "heart"
+      ]
+    },
+    "task": "Tap \"Skipped\" → select reason via voice (Hindi)",
+    "success": true,
+    "timeSeconds": 80,
+    "good": [
+      "Voice recognition worked well for Hindi",
+      "Hindi response anchored to chai routine felt natural",
+      "Skip reason cards (tap) faster than typing",
+      "Response in my language reassuring"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 3,
+    "persona": {
+      "id": 3,
+      "name": "Sunita Devi",
+      "role": "elder",
+      "age": 75,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "heart"
+      ]
+    },
+    "task": "Listen to read-aloud of medicine name",
+    "success": true,
+    "timeSeconds": 84,
+    "good": [
+      "Read-aloud clear, good pace",
+      "Helps when glasses not nearby"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 3,
+    "persona": {
+      "id": 3,
+      "name": "Sunita Devi",
+      "role": "elder",
+      "age": 75,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "heart"
+      ]
+    },
+    "task": "Switch text size A → A+ → A++",
+    "success": true,
+    "timeSeconds": 75,
+    "good": [
+      "Large touch targets (64px) easy to tap",
+      "Text size toggle clearly visible",
+      "High contrast mode very helpful for vision"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 3,
+    "persona": {
+      "id": 3,
+      "name": "Sunita Devi",
+      "role": "elder",
+      "age": 75,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "heart"
+      ]
+    },
+    "task": "Toggle high contrast mode",
+    "success": true,
+    "timeSeconds": 94,
+    "good": [
+      "Large touch targets (64px) easy to tap",
+      "Text size toggle clearly visible",
+      "High contrast mode very helpful for vision"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 3,
+    "persona": {
+      "id": 3,
+      "name": "Sunita Devi",
+      "role": "elder",
+      "age": 75,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "heart"
+      ]
+    },
+    "task": "Switch language EN ↔ HI",
+    "success": true,
+    "timeSeconds": 66,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 4,
+    "persona": {
+      "id": 4,
+      "name": "Mohan Lal",
+      "role": "elder",
+      "age": 70,
+      "techComfort": "medium",
+      "language": "mixed",
+      "conditions": [
+        "hypertension"
+      ]
+    },
+    "task": "Open app and see today's medicines",
+    "success": true,
+    "timeSeconds": 16,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 4,
+    "persona": {
+      "id": 4,
+      "name": "Mohan Lal",
+      "role": "elder",
+      "age": 70,
+      "techComfort": "medium",
+      "language": "mixed",
+      "conditions": [
+        "hypertension"
+      ]
+    },
+    "task": "Tap \"Taken\" for morning dose",
+    "success": false,
+    "timeSeconds": 53,
+    "good": [],
+    "bad": [
+      "Unexpected error or slow response"
+    ],
+    "suggestions": [],
+    "severity": "minor"
+  },
+  {
+    "userId": 4,
+    "persona": {
+      "id": 4,
+      "name": "Mohan Lal",
+      "role": "elder",
+      "age": 70,
+      "techComfort": "medium",
+      "language": "mixed",
+      "conditions": [
+        "hypertension"
+      ]
+    },
+    "task": "Tap \"Skipped\" → select reason via voice (Hindi)",
+    "success": true,
+    "timeSeconds": 49,
+    "good": [
+      "Skip reason cards (tap) faster than typing",
+      "Response in my language reassuring"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 4,
+    "persona": {
+      "id": 4,
+      "name": "Mohan Lal",
+      "role": "elder",
+      "age": 70,
+      "techComfort": "medium",
+      "language": "mixed",
+      "conditions": [
+        "hypertension"
+      ]
+    },
+    "task": "Listen to read-aloud of medicine name",
+    "success": true,
+    "timeSeconds": 30,
+    "good": [
+      "Read-aloud clear, good pace"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 4,
+    "persona": {
+      "id": 4,
+      "name": "Mohan Lal",
+      "role": "elder",
+      "age": 70,
+      "techComfort": "medium",
+      "language": "mixed",
+      "conditions": [
+        "hypertension"
+      ]
+    },
+    "task": "Switch text size A → A+ → A++",
+    "success": true,
+    "timeSeconds": 64,
+    "good": [
+      "Large touch targets (64px) easy to tap",
+      "Text size toggle clearly visible"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 4,
+    "persona": {
+      "id": 4,
+      "name": "Mohan Lal",
+      "role": "elder",
+      "age": 70,
+      "techComfort": "medium",
+      "language": "mixed",
+      "conditions": [
+        "hypertension"
+      ]
+    },
+    "task": "Toggle high contrast mode",
+    "success": true,
+    "timeSeconds": 68,
+    "good": [
+      "Large touch targets (64px) easy to tap",
+      "Text size toggle clearly visible"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 4,
+    "persona": {
+      "id": 4,
+      "name": "Mohan Lal",
+      "role": "elder",
+      "age": 70,
+      "techComfort": "medium",
+      "language": "mixed",
+      "conditions": [
+        "hypertension"
+      ]
+    },
+    "task": "Switch language EN ↔ HI",
+    "success": true,
+    "timeSeconds": 59,
+    "good": [
+      "Language switch instant, no reload"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 5,
+    "persona": {
+      "id": 5,
+      "name": "Geeta Bai",
+      "role": "elder",
+      "age": 73,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "cholesterol"
+      ]
+    },
+    "task": "Open app and see today's medicines",
+    "success": true,
+    "timeSeconds": 58,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 5,
+    "persona": {
+      "id": 5,
+      "name": "Geeta Bai",
+      "role": "elder",
+      "age": 73,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "cholesterol"
+      ]
+    },
+    "task": "Tap \"Taken\" for morning dose",
+    "success": true,
+    "timeSeconds": 45,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 5,
+    "persona": {
+      "id": 5,
+      "name": "Geeta Bai",
+      "role": "elder",
+      "age": 73,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "cholesterol"
+      ]
+    },
+    "task": "Tap \"Skipped\" → select reason via voice (Hindi)",
+    "success": true,
+    "timeSeconds": 84,
+    "good": [
+      "Voice recognition worked well for Hindi",
+      "Hindi response anchored to chai routine felt natural",
+      "Skip reason cards (tap) faster than typing",
+      "Response in my language reassuring"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 5,
+    "persona": {
+      "id": 5,
+      "name": "Geeta Bai",
+      "role": "elder",
+      "age": 73,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "cholesterol"
+      ]
+    },
+    "task": "Listen to read-aloud of medicine name",
+    "success": true,
+    "timeSeconds": 71,
+    "good": [
+      "Read-aloud clear, good pace",
+      "Helps when glasses not nearby"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 5,
+    "persona": {
+      "id": 5,
+      "name": "Geeta Bai",
+      "role": "elder",
+      "age": 73,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "cholesterol"
+      ]
+    },
+    "task": "Switch text size A → A+ → A++",
+    "success": false,
+    "timeSeconds": 51,
+    "good": [
+      "Large touch targets (64px) easy to tap",
+      "Text size toggle clearly visible",
+      "High contrast mode very helpful for vision"
+    ],
+    "bad": [
+      "Could not find setting quickly"
+    ],
+    "suggestions": [],
+    "severity": "major"
+  },
+  {
+    "userId": 5,
+    "persona": {
+      "id": 5,
+      "name": "Geeta Bai",
+      "role": "elder",
+      "age": 73,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "cholesterol"
+      ]
+    },
+    "task": "Toggle high contrast mode",
+    "success": true,
+    "timeSeconds": 53,
+    "good": [
+      "Large touch targets (64px) easy to tap",
+      "Text size toggle clearly visible",
+      "High contrast mode very helpful for vision"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 5,
+    "persona": {
+      "id": 5,
+      "name": "Geeta Bai",
+      "role": "elder",
+      "age": 73,
+      "techComfort": "low",
+      "language": "hi",
+      "conditions": [
+        "diabetes",
+        "cholesterol"
+      ]
+    },
+    "task": "Switch language EN ↔ HI",
+    "success": true,
+    "timeSeconds": 97,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 6,
+    "persona": {
+      "id": 6,
+      "name": "Rahul (son)",
+      "role": "caregiver",
+      "age": 40,
+      "techComfort": "high",
+      "language": "en",
+      "conditions": []
+    },
+    "task": "Open dashboard and see adherence rate",
+    "success": true,
+    "timeSeconds": 15,
+    "good": [
+      "Adherence % prominent and clear",
+      "Barrier breakdown helps identify patterns"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 6,
+    "persona": {
+      "id": 6,
+      "name": "Rahul (son)",
+      "role": "caregiver",
+      "age": 40,
+      "techComfort": "high",
+      "language": "en",
+      "conditions": []
+    },
+    "task": "View barrier breakdown chart",
+    "success": true,
+    "timeSeconds": 53,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 6,
+    "persona": {
+      "id": 6,
+      "name": "Rahul (son)",
+      "role": "caregiver",
+      "age": 40,
+      "techComfort": "high",
+      "language": "en",
+      "conditions": []
+    },
+    "task": "See active alerts and resolve one",
+    "success": true,
+    "timeSeconds": 32,
+    "good": [
+      "Alert colors (red/yellow/blue) intuitive",
+      "Call button directly opens dialer"
+    ],
+    "bad": [
+      "Alert reason text sometimes truncated"
+    ],
+    "suggestions": [
+      "Show full reason on tap/expand"
+    ],
+    "severity": "minor"
+  },
+  {
+    "userId": 6,
+    "persona": {
+      "id": 6,
+      "name": "Rahul (son)",
+      "role": "caregiver",
+      "age": 40,
+      "techComfort": "high",
+      "language": "en",
+      "conditions": []
+    },
+    "task": "Check pending fasting plan",
+    "success": true,
+    "timeSeconds": 47,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 6,
+    "persona": {
+      "id": 6,
+      "name": "Rahul (son)",
+      "role": "caregiver",
+      "age": 40,
+      "techComfort": "high",
+      "language": "en",
+      "conditions": []
+    },
+    "task": "Call elder via button",
+    "success": true,
+    "timeSeconds": 56,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 6,
+    "persona": {
+      "id": 6,
+      "name": "Rahul (son)",
+      "role": "caregiver",
+      "age": 40,
+      "techComfort": "high",
+      "language": "en",
+      "conditions": []
+    },
+    "task": "Switch between elders (if multiple)",
+    "success": true,
+    "timeSeconds": 59,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 7,
+    "persona": {
+      "id": 7,
+      "name": "Priya (daughter)",
+      "role": "caregiver",
+      "age": 35,
+      "techComfort": "high",
+      "language": "mixed",
+      "conditions": []
+    },
+    "task": "Open dashboard and see adherence rate",
+    "success": true,
+    "timeSeconds": 59,
+    "good": [
+      "Adherence % prominent and clear",
+      "Barrier breakdown helps identify patterns"
+    ],
+    "bad": [
+      "Would like weekly trend line chart"
+    ],
+    "suggestions": [
+      "Add 7-day trend sparkline"
+    ],
+    "severity": "minor"
+  },
+  {
+    "userId": 7,
+    "persona": {
+      "id": 7,
+      "name": "Priya (daughter)",
+      "role": "caregiver",
+      "age": 35,
+      "techComfort": "high",
+      "language": "mixed",
+      "conditions": []
+    },
+    "task": "View barrier breakdown chart",
+    "success": true,
+    "timeSeconds": 35,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 7,
+    "persona": {
+      "id": 7,
+      "name": "Priya (daughter)",
+      "role": "caregiver",
+      "age": 35,
+      "techComfort": "high",
+      "language": "mixed",
+      "conditions": []
+    },
+    "task": "See active alerts and resolve one",
+    "success": true,
+    "timeSeconds": 29,
+    "good": [
+      "Alert colors (red/yellow/blue) intuitive",
+      "Call button directly opens dialer"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 7,
+    "persona": {
+      "id": 7,
+      "name": "Priya (daughter)",
+      "role": "caregiver",
+      "age": 35,
+      "techComfort": "high",
+      "language": "mixed",
+      "conditions": []
+    },
+    "task": "Check pending fasting plan",
+    "success": true,
+    "timeSeconds": 51,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 7,
+    "persona": {
+      "id": 7,
+      "name": "Priya (daughter)",
+      "role": "caregiver",
+      "age": 35,
+      "techComfort": "high",
+      "language": "mixed",
+      "conditions": []
+    },
+    "task": "Call elder via button",
+    "success": true,
+    "timeSeconds": 45,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 7,
+    "persona": {
+      "id": 7,
+      "name": "Priya (daughter)",
+      "role": "caregiver",
+      "age": 35,
+      "techComfort": "high",
+      "language": "mixed",
+      "conditions": []
+    },
+    "task": "Switch between elders (if multiple)",
+    "success": true,
+    "timeSeconds": 43,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 8,
+    "persona": {
+      "id": 8,
+      "name": "Amit (son)",
+      "role": "caregiver",
+      "age": 42,
+      "techComfort": "medium",
+      "language": "en",
+      "conditions": []
+    },
+    "task": "Open dashboard and see adherence rate",
+    "success": true,
+    "timeSeconds": 36,
+    "good": [
+      "Adherence % prominent and clear",
+      "Barrier breakdown helps identify patterns"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 8,
+    "persona": {
+      "id": 8,
+      "name": "Amit (son)",
+      "role": "caregiver",
+      "age": 42,
+      "techComfort": "medium",
+      "language": "en",
+      "conditions": []
+    },
+    "task": "View barrier breakdown chart",
+    "success": true,
+    "timeSeconds": 49,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 8,
+    "persona": {
+      "id": 8,
+      "name": "Amit (son)",
+      "role": "caregiver",
+      "age": 42,
+      "techComfort": "medium",
+      "language": "en",
+      "conditions": []
+    },
+    "task": "See active alerts and resolve one",
+    "success": true,
+    "timeSeconds": 23,
+    "good": [
+      "Alert colors (red/yellow/blue) intuitive",
+      "Call button directly opens dialer"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 8,
+    "persona": {
+      "id": 8,
+      "name": "Amit (son)",
+      "role": "caregiver",
+      "age": 42,
+      "techComfort": "medium",
+      "language": "en",
+      "conditions": []
+    },
+    "task": "Check pending fasting plan",
+    "success": true,
+    "timeSeconds": 19,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 8,
+    "persona": {
+      "id": 8,
+      "name": "Amit (son)",
+      "role": "caregiver",
+      "age": 42,
+      "techComfort": "medium",
+      "language": "en",
+      "conditions": []
+    },
+    "task": "Call elder via button",
+    "success": true,
+    "timeSeconds": 71,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 8,
+    "persona": {
+      "id": 8,
+      "name": "Amit (son)",
+      "role": "caregiver",
+      "age": 42,
+      "techComfort": "medium",
+      "language": "en",
+      "conditions": []
+    },
+    "task": "Switch between elders (if multiple)",
+    "success": true,
+    "timeSeconds": 54,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 9,
+    "persona": {
+      "id": 9,
+      "name": "Neha (daughter-in-law)",
+      "role": "caregiver",
+      "age": 33,
+      "techComfort": "high",
+      "language": "mixed",
+      "conditions": []
+    },
+    "task": "Open dashboard and see adherence rate",
+    "success": true,
+    "timeSeconds": 42,
+    "good": [
+      "Adherence % prominent and clear",
+      "Barrier breakdown helps identify patterns"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 9,
+    "persona": {
+      "id": 9,
+      "name": "Neha (daughter-in-law)",
+      "role": "caregiver",
+      "age": 33,
+      "techComfort": "high",
+      "language": "mixed",
+      "conditions": []
+    },
+    "task": "View barrier breakdown chart",
+    "success": true,
+    "timeSeconds": 21,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 9,
+    "persona": {
+      "id": 9,
+      "name": "Neha (daughter-in-law)",
+      "role": "caregiver",
+      "age": 33,
+      "techComfort": "high",
+      "language": "mixed",
+      "conditions": []
+    },
+    "task": "See active alerts and resolve one",
+    "success": true,
+    "timeSeconds": 66,
+    "good": [
+      "Alert colors (red/yellow/blue) intuitive",
+      "Call button directly opens dialer"
+    ],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 9,
+    "persona": {
+      "id": 9,
+      "name": "Neha (daughter-in-law)",
+      "role": "caregiver",
+      "age": 33,
+      "techComfort": "high",
+      "language": "mixed",
+      "conditions": []
+    },
+    "task": "Check pending fasting plan",
+    "success": true,
+    "timeSeconds": 70,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 9,
+    "persona": {
+      "id": 9,
+      "name": "Neha (daughter-in-law)",
+      "role": "caregiver",
+      "age": 33,
+      "techComfort": "high",
+      "language": "mixed",
+      "conditions": []
+    },
+    "task": "Call elder via button",
+    "success": true,
+    "timeSeconds": 51,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 9,
+    "persona": {
+      "id": 9,
+      "name": "Neha (daughter-in-law)",
+      "role": "caregiver",
+      "age": 33,
+      "techComfort": "high",
+      "language": "mixed",
+      "conditions": []
+    },
+    "task": "Switch between elders (if multiple)",
+    "success": true,
+    "timeSeconds": 71,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 10,
+    "persona": {
+      "id": 10,
+      "name": "Sanjay (nephew)",
+      "role": "caregiver",
+      "age": 38,
+      "techComfort": "medium",
+      "language": "en",
+      "conditions": []
+    },
+    "task": "Open dashboard and see adherence rate",
+    "success": true,
+    "timeSeconds": 70,
+    "good": [
+      "Adherence % prominent and clear",
+      "Barrier breakdown helps identify patterns"
+    ],
+    "bad": [
+      "Would like weekly trend line chart"
+    ],
+    "suggestions": [
+      "Add 7-day trend sparkline"
+    ],
+    "severity": "minor"
+  },
+  {
+    "userId": 10,
+    "persona": {
+      "id": 10,
+      "name": "Sanjay (nephew)",
+      "role": "caregiver",
+      "age": 38,
+      "techComfort": "medium",
+      "language": "en",
+      "conditions": []
+    },
+    "task": "View barrier breakdown chart",
+    "success": true,
+    "timeSeconds": 74,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 10,
+    "persona": {
+      "id": 10,
+      "name": "Sanjay (nephew)",
+      "role": "caregiver",
+      "age": 38,
+      "techComfort": "medium",
+      "language": "en",
+      "conditions": []
+    },
+    "task": "See active alerts and resolve one",
+    "success": false,
+    "timeSeconds": 36,
+    "good": [
+      "Alert colors (red/yellow/blue) intuitive",
+      "Call button directly opens dialer"
+    ],
+    "bad": [
+      "Unexpected error or slow response"
+    ],
+    "suggestions": [],
+    "severity": "minor"
+  },
+  {
+    "userId": 10,
+    "persona": {
+      "id": 10,
+      "name": "Sanjay (nephew)",
+      "role": "caregiver",
+      "age": 38,
+      "techComfort": "medium",
+      "language": "en",
+      "conditions": []
+    },
+    "task": "Check pending fasting plan",
+    "success": true,
+    "timeSeconds": 34,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 10,
+    "persona": {
+      "id": 10,
+      "name": "Sanjay (nephew)",
+      "role": "caregiver",
+      "age": 38,
+      "techComfort": "medium",
+      "language": "en",
+      "conditions": []
+    },
+    "task": "Call elder via button",
+    "success": true,
+    "timeSeconds": 52,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  },
+  {
+    "userId": 10,
+    "persona": {
+      "id": 10,
+      "name": "Sanjay (nephew)",
+      "role": "caregiver",
+      "age": 38,
+      "techComfort": "medium",
+      "language": "en",
+      "conditions": []
+    },
+    "task": "Switch between elders (if multiple)",
+    "success": true,
+    "timeSeconds": 26,
+    "good": [],
+    "bad": [],
+    "suggestions": [],
+    "severity": "none"
+  }
+]

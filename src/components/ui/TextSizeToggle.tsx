@@ -22,6 +22,12 @@ const SIZE_LABELS: Record<TextSize, { en: string; hi: string }> = {
   large: { en: 'A++', hi: 'क++' },
 };
 
+const SIZE_TOOLTIPS: Record<TextSize, { en: string; hi: string }> = {
+  small: { en: 'Normal text size', hi: 'सामान्य आकार' },
+  medium: { en: 'Larger text', hi: 'बड़ा टेक्स्ट' },
+  large: { en: 'Largest text', hi: 'सबसे बड़ा टेक्स्ट' },
+};
+
 const STORAGE_KEY = 'saathi_text_size';
 
 export function TextSizeToggle({ language = 'en' }: { language?: 'en' | 'hi' }) {
@@ -72,22 +78,27 @@ export function TextSizeToggle({ language = 'en' }: { language?: 'en' | 'hi' }) 
 
   return (
     <div className="flex items-center gap-2" role="group" aria-label={language === 'hi' ? 'टेक्स्ट आकार' : 'Text size'}>
-      <span className="text-sm font-medium text-gray-600 dark:text-gray-400 hidden sm:block">
-        {language === 'hi' ? 'आकार:' : 'Size:'}
+      {/* Always visible label - not hidden on mobile */}
+      <span className="text-sm font-medium text-gray-600 dark:text-gray-400 whitespace-nowrap">
+        {language === 'hi' ? 'टेक्स्ट आकार:' : 'Text Size:'}
       </span>
-      {['small', 'medium', 'large'].map((s) => (
-        <BigButton
-          key={s}
-          size="default"
-          variant={size === s ? 'primary' : 'secondary'}
-          onClick={() => setSize(s as TextSize)}
-          aria-pressed={size === s}
-          aria-label={SIZE_LABELS[s as TextSize][language]}
-          className="min-w-[56px]"
-        >
-          {SIZE_LABELS[s as TextSize][language]}
-        </BigButton>
-      ))}
+      {['small', 'medium', 'large'].map((s) => {
+        const currentSize = s as TextSize;
+        return (
+          <BigButton
+            key={s}
+            size="default"
+            variant={size === currentSize ? 'primary' : 'secondary'}
+            onClick={() => setSize(currentSize)}
+            aria-pressed={size === currentSize}
+            aria-label={`${SIZE_LABELS[currentSize][language]} - ${SIZE_TOOLTIPS[currentSize][language]}`}
+            title={SIZE_TOOLTIPS[currentSize][language]}
+            className="min-w-[56px]"
+          >
+            {SIZE_LABELS[currentSize][language]}
+          </BigButton>
+        );
+      })}
     </div>
   );
 }
