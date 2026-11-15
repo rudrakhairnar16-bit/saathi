@@ -30,9 +30,9 @@ export const BARRIER_CATEGORIES: Record<Barrier, BarrierCategory> = {
     labelHi: 'भूल गई',
     icon: '🧠',
     typicalPhrases: {
-      en: ['forgot', 'didnt remember', 'slipped my mind', 'busy', 'forgot to take'],
-      hi: ['bhool gayi', 'bhool gaya', 'yaad nahi', 'bhool gaye', 'yaad nahi aaya', 'vyast thi', 'भूल गई', 'भूल गया', 'याद नहीं', 'याद नहीं आया', 'व्यस्त थी'],
-      mixed: ['bhool gayi thi', 'forgot to take', 'yaad nahi raha'],
+      en: ['forgot', 'didnt remember', 'slipped my mind', 'busy', 'forgot to take', 'missed it', 'skipped it', 'overlooked', 'spaced out', 'mind blank', 'did not remember', 'failed to take', 'neglected'],
+      hi: ['bhool gayi', 'bhool gaya', 'yaad nahi', 'bhool gaye', 'yaad nahi aaya', 'vyast thi', 'भूल गई', 'भूल गया', 'याद नहीं', 'याद नहीं आया', 'व्यस्त थी', 'चूक गई', 'छूट गई', 'याद नही रहा', 'ध्यान नही दिया'],
+      mixed: ['bhool gayi thi', 'forgot to take', 'yaad nahi raha', 'miss kar diya', 'skip ho gaya', 'dhyan nahi diya'],
     },
     defaultAction: {
       caregiverAlert: 'Missed dose due to forgetting. Suggested anchoring to a daily routine.',
@@ -46,9 +46,9 @@ export const BARRIER_CATEGORIES: Record<Barrier, BarrierCategory> = {
     labelHi: 'तबीयत खराब लगी',
     icon: '🤢',
     typicalPhrases: {
-      en: ['dizzy', 'nausea', 'vomiting', 'sick', 'unwell', 'side effect', 'reaction', 'dizzy after', 'headache'],
-      hi: ['chakkar', 'ulti', 'ghabrahat', 'tabiyat kharab', 'side effect', 'reaction', 'sir dard', 'kamjori', 'चक्कर', 'उल्टी', 'घबराहट', 'तबीयत खराब', 'सिर दर्द', 'कमजोरी'],
-      mixed: ['dizzy feel hua', 'side effect hua', 'chakkar aaya'],
+      en: ['dizzy', 'nausea', 'vomiting', 'sick', 'unwell', 'side effect', 'reaction', 'dizzy after', 'headache', 'stomach pain', 'abdominal pain', 'diarrhea', 'constipation', 'fatigue', 'tired', 'weakness', 'drowsy', 'sleepy', 'rash', 'itching', 'swelling', 'breathless', 'palpitations', 'heart racing', 'low blood pressure', 'high blood pressure', 'blood sugar low', 'hypoglycemia', 'muscle pain', 'joint pain', 'cramps', 'bloating', 'gas', 'indigestion', 'acidity', 'heartburn', 'dry mouth', 'metallic taste', 'blurred vision', 'tremor', 'shaking', 'insomnia', 'nightmares', 'depression', 'anxiety', 'mood changes', 'confusion', 'memory problems', 'fainting', 'syncope', 'fall', 'injury'],
+      hi: ['chakkar', 'ulti', 'ghabrahat', 'tabiyat kharab', 'side effect', 'reaction', 'sir dard', 'kamjori', 'चक्कर', 'उल्टी', 'घबराहट', 'तबीयत खराब', 'सिर दर्द', 'कमजोरी', 'पेट दर्द', 'दस्त', 'कब्ज', 'थकान', 'नींद', 'चकत्ते', 'खुजली', 'सूजन', 'सांस फूलना', 'दिल तेज', 'शुगर कम', 'मांसपेशियों में दर्द', 'जोड़ों में दर्द', 'ऐंठन', 'गैस', 'अपच', 'एसिडिटी', 'सीने में जलन', 'मुंह सूखना', 'धुंधला दिखना', 'कांपना', 'बेचैनी', 'उदासी', 'चिंता', 'भ्रम', 'याददाश्त', 'बेहोशी', 'गिरना', 'चोट'],
+      mixed: ['dizzy feel hua', 'side effect hua', 'chakkar aaya', 'pet dard hua', 'kamzori lagi', 'ulta hua', 'gas bani', 'acidity hui', 'neend nahi aayi', 'mann kharab hua'],
     },
     defaultAction: {
       caregiverAlert: 'Reported side effect. Flagged for doctor review. Never advise stopping medication.',
@@ -62,9 +62,9 @@ export const BARRIER_CATEGORIES: Record<Barrier, BarrierCategory> = {
     labelHi: 'अब ठीक हूँ',
     icon: '😊',
     typicalPhrases: {
-      en: ['feel better', 'feeling fine', 'no need', 'cured', 'better now', 'dont need'],
-      hi: ['ab theek hoon', 'theek hoon', 'zaroorat nahi', 'ab theek', 'swasth hoon', 'अब ठीक हूँ', 'ठीक हूँ', 'जरूरत नहीं', 'अब ठीक', 'स्वस्थ हूँ'],
-      mixed: ['feel better ab', 'theek ho gayi'],
+      en: ['feel better', 'feeling fine', 'no need', 'cured', 'better now', 'dont need', 'healed', 'recovered', 'well now', 'healthy now', 'symptoms gone', 'pain gone', 'bp normal', 'sugar normal', 'controlled', 'stable', 'off medicine', 'stop medicine', 'quit medicine', 'discontinue', 'no more pills', 'enough medicine', 'dont want to take', 'tired of taking', 'burden', 'hassle', 'inconvenience', 'waste of money', 'unnecessary', 'pointless', 'useless', 'not working', 'ineffective', 'placebo', 'natural remedies', 'ayurveda', 'homeopathy', 'diet exercise', 'lifestyle change', 'cured naturally'],
+      hi: ['ab theek hoon', 'theek hoon', 'zaroorat nahi', 'ab theek', 'swasth hoon', 'अब ठीक हूँ', 'ठीक हूँ', 'जरूरत नहीं', 'अब ठीक', 'स्वस्थ हूँ', 'आराम है', 'दर्द गया', 'बीपी नॉर्मल', 'शुगर नॉर्मल', 'कंट्रोल में', 'स्थिर', 'दवा बंद', 'दवा छोड़', 'दवा खत्म', 'गोलियां बंद', 'काफी दवा', 'नही लेनी', 'थक गया', 'बोझ', 'परेशानी', 'पैसे की बर्बादी', 'फालतू', 'बेकार', 'काम नही कर रही', 'असर नही', 'प्राकृतिक इलाज', 'आयुर्वेद', 'होम्योपैथी', 'डाइट एक्सरसाइज', 'लाइफस्टाइल चेंज', 'प्राकृतिक ठीक'],
+      mixed: ['feel better ab', 'theek ho gayi', 'ab zaroorat nahi', 'bp normal hai', 'sugar control hai', 'dawa band karo', 'goli band', 'natural ilaj', 'ayurveda se theek'],
     },
     defaultAction: {
       caregiverAlert: 'Patient feels better and questions need for medicine. Provided explanation about chronic condition management.',
@@ -78,9 +78,9 @@ export const BARRIER_CATEGORIES: Record<Barrier, BarrierCategory> = {
     labelHi: 'दवा खत्म / महंगी',
     icon: '💊',
     typicalPhrases: {
-      en: ['finished', 'out of stock', 'expensive', 'costly', 'cannot afford', 'khatam', 'paisa nahi'],
-      hi: ['khatam', 'khatam ho gayi', 'mahngi', 'paisa nahi', 'stock nahi', 'kharch nahi', 'खत्म', 'खत्म हो गई', 'महंगी', 'पैसा नहीं', 'स्टॉक नहीं', 'खर्च नहीं'],
-      mixed: ['medicine khatam', 'cost zyada', 'stock over'],
+      en: ['finished', 'out of stock', 'expensive', 'costly', 'cannot afford', 'khatam', 'paisa nahi', 'empty', 'ran out', 'no more', 'depleted', 'exhausted', 'shortage', 'unavailable', 'discontinued', 'backorder', 'pharmacy closed', 'no refill', 'prescription expired', 'insurance denied', 'copay high', 'deductible', 'generic not available', 'brand only', 'cost too much', 'price hike', 'inflation', 'budget tight', 'financial hardship', 'poverty', 'low income', 'pension not enough', 'social security', 'medicare gap', 'donut hole', 'assistance program', 'patient assistance', 'coupon expired', 'discount ended', 'manufacturer program'],
+      hi: ['khatam', 'khatam ho gayi', 'mahngi', 'paisa nahi', 'stock nahi', 'kharch nahi', 'खत्म', 'खत्म हो गई', 'महंगी', 'पैसा नहीं', 'स्टॉक नहीं', 'खर्च नहीं', 'खाली', 'नही मिली', 'उपलब्ध नही', 'बंद हो गई', 'रिफिल नही', 'पर्चा खत्म', 'बीमा मना', 'कॉपे ज्यादा', 'जेनेरिक नही', 'ब्रांड ही', 'दाम बढ़ गए', 'महंगाई', 'बजट टाइट', 'आर्थिक तंगी', 'गरीबी', 'कम आय', 'पेंशन कम', 'सहायता कार्यक्रम', 'कूपन खत्म', 'छूट खत्म', 'निर्माता कार्यक्रम'],
+      mixed: ['medicine khatam', 'cost zyada', 'stock over', 'dawa khatam', 'paisa kam', 'refill nahi', 'prescription expire', 'generic nahi mila', 'brand mahnga', 'discount khatam'],
     },
     defaultAction: {
       caregiverAlert: 'Medicine finished or cost concern. Refill alert sent. Suggested asking doctor about lower-cost options.',
@@ -95,9 +95,9 @@ export const BARRIER_CATEGORIES: Record<Barrier, BarrierCategory> = {
     labelHi: 'निगलने में दिक्कत',
     icon: '😖',
     typicalPhrases: {
-      en: ['hard to swallow', 'cannot swallow', 'choking', 'big tablet', 'swallowing problem'],
-      hi: ['nigalne mein dikkat', 'nigal nahi paati', 'badi goli', 'gala mein fasti', 'निगलने में दिक्कत', 'निगल नहीं पाती', 'बड़ी गोली', 'गले में फंसती'],
-      mixed: ['swallow karne mein problem', 'tablet badi hai'],
+      en: ['hard to swallow', 'cannot swallow', 'choking', 'big tablet', 'swallowing problem', 'pill stuck', 'tablet stuck', 'capsule stuck', 'gag reflex', 'gagging', 'dysphagia', 'throat tight', 'esophagus', 'food pipe', 'pill size', 'too large', 'horse pill', 'chalky', 'bitter taste', 'aftertaste', 'coating', 'film coating', 'enteric coated', 'crush', 'crushing', 'chew', 'chewable', 'dissolve', 'dispersible', 'syrup', 'liquid', 'suspension', 'oral solution', 'patch', 'injection', 'alternative formulation', 'compounding', 'pharmacy compound', 'swallow aid', 'gel', 'lubricant', 'water', 'fluid', 'sip', 'gulp', 'fear of choking', 'pill anxiety', 'pill phobia'],
+      hi: ['nigalne mein dikkat', 'nigal nahi paati', 'badi goli', 'gala mein fasti', 'निगलने में दिक्कत', 'निगल नहीं पाती', 'बड़ी गोली', 'गले में फंसती', 'गोली फंसी', 'कैप्सूल फंसा', 'उल्टी आना', 'निगलने में उल्टी', 'डिस्फेजिया', 'गला टाइट', 'खाने की नली', 'गोली का आकार', 'बहुत बड़ी', 'घोड़े की गोली', 'चॉकी', 'कड़वा स्वाद', 'बाद का स्वाद', 'कोटिंग', 'फिल्म कोटिंग', 'एंटेरिक कोटेड', 'पीसना', 'चबाना', 'चबाने योग्य', 'घुलना', 'डिस्पर्सिबल', 'सिरप', 'लिक्विड', 'सस्पेंशन', 'ओरल सोल्यूशन', 'पैच', 'इंजेक्शन', 'वैकल्पिक फॉर्मूलेशन', 'कंपाउंडिंग', 'फार्मेसी कंपाउंड', 'निगलने में सहायता', 'जेल', 'लुब्रिकेंट', 'पानी', 'तरल पदार्थ', 'घूंट', 'निगलना', 'घुटने का डर', 'गोली का डर', 'गोली फोबिया'],
+      mixed: ['swallow karne mein problem', 'tablet badi hai', 'goli fas gayi', 'ulta aaya', 'chabane wali', 'syrup chahiye', 'liquid form', 'injection better', 'compounding pharmacy', 'gel laga ke', 'pani ke saath', 'darr lagta goli se'],
     },
     defaultAction: {
       caregiverAlert: 'Difficulty swallowing reported. Suggested asking doctor about syrup/crushable/alternate form.',
@@ -111,9 +111,9 @@ export const BARRIER_CATEGORIES: Record<Barrier, BarrierCategory> = {
     labelHi: 'चिंता / डर',
     icon: '😟',
     typicalPhrases: {
-      en: ['worried', 'scared', 'afraid', 'addiction', 'habit', 'side effects later', 'fear', 'darr'],
-      hi: ['darr', 'chinta', 'aadat padh jayegi', 'nuksan', 'side effect hoga', 'ghabhrahat', 'डर', 'चिंता', 'आदत पड़ जाएगी', 'नुकसान', 'साइड इफेक्ट होगा', 'घबराहट'],
-      mixed: ['darr lagta hai', 'worried about side effects'],
+      en: ['worried', 'scared', 'afraid', 'addiction', 'habit', 'side effects later', 'fear', 'darr', 'dependency', 'dependent', 'hooked', 'addicted', 'withdrawal', 'cold turkey', 'tolerance', 'dose increase', 'stronger dose', 'liver damage', 'kidney damage', 'organ damage', 'long term effects', 'cancer risk', 'dementia', 'memory loss', 'brain damage', 'chemical', 'toxin', 'poison', 'unnatural', 'synthetic', 'big pharma', 'conspiracy', 'experiment', 'guinea pig', 'lab rat', 'side effects worse than disease', 'quality of life', 'rather die', 'natural healing', 'body heals itself', 'immune system', 'god will heal', 'faith healing', 'prayer', 'miracle', 'placebo effect', 'nocebo', 'mind over matter', 'psychosomatic', 'doctor profit', 'kickback', 'commission', 'pharma lobby', 'fda approval', 'clinical trials', 'insufficient testing', 'rushed approval', 'recall', 'black box warning', 'class action', 'lawsuit', 'settlement', 'whistleblower'],
+      hi: ['darr', 'chinta', 'aadat padh jayegi', 'nuksan', 'side effect hoga', 'ghabhrahat', 'डर', 'चिंता', 'आदत पड़ जाएगी', 'नुकसान', 'साइड इफेक्ट होगा', 'घबराहट', 'निर्भरता', 'निर्भर', 'लत', 'आदी', 'विड्रॉल', 'छोड़ना', 'सहनशक्ति', 'डोज बढ़ाना', 'स्ट्रॉन्ग डोज', 'लिवर खराब', 'किडनी खराब', 'अंग खराब', 'लंबे समय के प्रभाव', 'कैंसर खतरा', 'भूलने की बीमारी', 'याददाश्त खोना', 'दिमाग खराब', 'केमिकल', 'टॉक्सिन', 'जहर', 'अप्राकृतिक', 'सिंथेटिक', 'बिग फार्मा', 'षड्यंत्र', 'प्रयोग', 'गिनी पिग', 'लैब रैट', 'बीमारी से बुरे साइड इफेक्ट', 'जीवन की गुणवत्ता', 'मरना बेहतर', 'प्राकृतिक उपचार', 'शरीर खुद ठीक', 'प्रतिरक्षा प्रणाली', 'भगवान ठीक करेंगे', 'आस्था उपचार', 'प्रार्थना', 'चमत्कार', 'प्लेसीबो प्रभाव', 'नोसीबो', 'मन की शक्ति', 'मनोरोग', 'डॉक्टर का मुनाफा', 'किकबैक', 'कमीशन', 'फार्मा लॉबी', 'एफडीए अप्रूवल', 'क्लिनिकल ट्रायल', 'अपर्याप्त परीक्षण', 'जल्दी मंजूरी', 'वापसी', 'ब्लैक बॉक्स चेतावनी', 'क्लास एक्शन', 'मुकदमा', 'समझौता', 'व्हिसलब्लोअर'],
+      mixed: ['darr lagta hai', 'worried about side effects', 'aadat padh jayegi', 'liver kharab hoga', 'kidney damage', 'big pharma conspiracy', 'natural healing better', 'body khud theek karega', 'bhagwan theek karenge', 'doctor commission khate hain', 'pharma lobby', 'clinical trial kam hue', 'black box warning', 'dawa wapas hui'],
     },
     defaultAction: {
       caregiverAlert: 'Fear or belief-based hesitation. Provided empathetic explanation. Family heads-up sent.',

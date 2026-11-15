@@ -52,6 +52,11 @@ function generateId(): string {
   return uuidv4().slice(0, 8);
 }
 
+// Fixed IDs for seeded data (for testing/demo)
+const SEED_ELDER_ID = 'elder1';
+const SEED_CAREGIVER_ID = 'caregiver1';
+const SEED_DOCTOR_ID = 'doctor1';
+
 function nowISO(): string {
   return new Date().toISOString();
 }
@@ -375,20 +380,20 @@ export class InMemoryRepository implements RepoInterface {
   async seedData(): Promise<void> {
     if (this.seeded) return;
 
-    // Create people
-    const elder: Person = { id: generateId(), ...SEED_PEOPLE[0] };
+    // Create people with fixed IDs for testing
+    const elder: Person = { id: SEED_ELDER_ID, ...SEED_PEOPLE[0] };
     this.store.people.set(elder.id, elder);
 
-    const caregiver: Person = { id: generateId(), ...SEED_PEOPLE[1], elderId: elder.id };
+    const caregiver: Person = { id: SEED_CAREGIVER_ID, ...SEED_PEOPLE[1], elderId: elder.id };
     this.store.people.set(caregiver.id, caregiver);
 
-    const doctor: Person = { id: generateId(), ...SEED_PEOPLE[2], elderId: elder.id };
+    const doctor: Person = { id: SEED_DOCTOR_ID, ...SEED_PEOPLE[2], elderId: elder.id };
     this.store.people.set(doctor.id, doctor);
 
     // Create medicines
     const medicines: Medicine[] = SEED_MEDICINES.map(med => ({
       id: generateId(),
-      elderId: elder.id,
+      elderId: SEED_ELDER_ID,
       ...med,
     }));
 

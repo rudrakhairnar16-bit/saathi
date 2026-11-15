@@ -50,7 +50,7 @@ export default function ElderHome() {
       {/* Welcome Card */}
       <section className="card p-6 text-center" aria-labelledby="welcome-heading">
         <h2 id="welcome-heading" className="text-2xl font-bold mb-2 text-[var(--color-text-primary)]">
-          {getMessage(language === 'hi' ? 'नमस्ते, माँ' : 'Hello, Maa', language)}
+          {getMessage('greetingHello', language)}
         </h2>
         <p className="text-[var(--color-text-secondary)]">
           {pendingCount > 0

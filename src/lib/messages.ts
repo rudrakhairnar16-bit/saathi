@@ -17,6 +17,14 @@ export const MESSAGES: Record<string, MessageSet> = {
     en: 'Something went wrong. Let\'s try again.',
     hi: 'थोड़ी दिक्कत आ गई। फिर से कोशिश करते हैं।',
   },
+  greetingHello: {
+    en: 'Hello, Maa',
+    hi: 'नमस्ते, माँ',
+  },
+  greetingWelcome: {
+    en: 'Welcome back!',
+    hi: 'वापस स्वागत है!',
+  },
   tryAgainLater: {
     en: 'Please try again in a moment.',
     hi: 'कृपया थोड़ी देर बाद फिर कोशिश करें।',
