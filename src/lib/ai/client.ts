@@ -40,7 +40,7 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
 function getClient(): GoogleGenAI | null {
   if (!GEMINI_API_KEY) return null;
-  return new GoogleGenAI({ apiKey: GEMINI_API_KEY });
+  return new GoogleGenAI({ apiKey: GEMINI_API_KEY, apiVersion: 'v1beta' });
 }
 
 // ============================================================================
