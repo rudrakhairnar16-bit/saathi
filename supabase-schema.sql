@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS visit_notes (
   raw_text TEXT NOT NULL,
   simple_lines TEXT[] NOT NULL,
   draft_medicines JSONB NOT NULL DEFAULT '[]',
-  overlaps JSONB NOT NULL DEFAULT '[]',
+  "overlaps" JSONB NOT NULL DEFAULT '[]',
   source TEXT NOT NULL CHECK (source IN ('gemini', 'fallback')),
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
