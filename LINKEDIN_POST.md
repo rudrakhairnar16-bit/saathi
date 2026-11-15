@@ -30,6 +30,7 @@ Next.js 16 (App Router) • React 19 • TypeScript (strict) • Tailwind CSS v4
 
 📌 *Project Demo:* https://1-xi-swart.vercel.app
 📌 *GitHub Repository:* https://github.com/rudrakhairnar16-bit/saathi
+📌 *Demo Video:* https://drive.google.com/file/d/1exPcMNaulomFE8BIwu4sv5H4Uy0kO_EZ/view?usp=sharing
 
 < Make sure to tag *@MnM* manually in your post so the official organisation page gets notified. >
 

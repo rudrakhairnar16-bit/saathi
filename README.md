@@ -2,6 +2,8 @@
 
 > **Reminders solve forgetting. Saathi solves all the reasons elders miss medicines.**
 
+🎬 **Demo Video:** https://drive.google.com/file/d/1exPcMNaulomFE8BIwu4sv5H4Uy0kO_EZ/view?usp=sharing
+
 Saathi is an elderly-care medication companion for the **Catalyst Solo AI Hackathon** that goes beyond simple alarms by:
 - 🧠 **Kyun Chhoda?** — Understanding *why* a dose was missed (7 barrier categories) and taking cause-specific action
 - 🩺 **Doctor Ki Baat** — Converting doctor visits into simple notes, draft medicines, and overlap warnings

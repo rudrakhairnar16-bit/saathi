@@ -20,7 +20,7 @@
 | **Solution Summary** | Saathi is an AI-powered medication companion that: (1) Classifies skip reasons via voice/text/tap into 7 barrier categories and takes cause-specific action; (2) Converts doctor visits into simple notes + draft medicines + overlap warnings; (3) Plans medicines around fasting days (Ekadashi, Navratri, Roza, Paryushan, Karva Chauth) with per-medicine guidance. Built accessibility-first for low-tech elders (Hindi/English, 20px+ text, 64px taps, AAA contrast, read-aloud, SOS button). | ✅ |
 | **Tech Stack** | Next.js 16, React 19, TypeScript, Tailwind CSS v4, Google Gemini API, Supabase (Postgres), Vitest, Zod 4 | ✅ |
 | **AI/ML Usage** | Google Gemini 2.5 Flash for: (a) Doctor note → structured extraction (5-line summary + draft medicines); (b) Fasting planner → per-medicine timing guidance + doctor questions; (c) Barrier classification → voice/text → 7 categories. All AI outputs are drafts requiring human confirmation. Deterministic fallbacks work offline without API key. | ✅ |
-| **Demo Video URL** | [PLACEHOLDER: Add YouTube/Loom link here before submission] | ⏳ PENDING |
+| **Demo Video URL** | https://drive.google.com/file/d/1exPcMNaulomFE8BIwu4sv5H4Uy0kO_EZ/view?usp=sharing | ✅ |
 | **Repository URL** | https://github.com/rudrakhairnar16-bit/saathi | ✅ |
 | **Deployed URL** | https://1-xi-swart.vercel.app | ✅ |
 | **License** | MIT | ✅ |
@@ -28,19 +28,20 @@
 
 ---
 
-## 2. Demo Video Link Placeholder
+## 2. Demo Video Link
 
-**Action Required:** Record and upload a 2-3 minute demo video covering:
+**Video URL:** https://drive.google.com/file/d/1exPcMNaulomFE8BIwu4sv5H4Uy0kO_EZ/view?usp=sharing
 
-- [ ] **30s** — Problem & Persona (Kamla Ben, 72, Vadodara)
-- [ ] **45s** — Elder Flow: Skip dose → Voice reason (Hindi) → Barrier action
-- [ ] **30s** — Elder Flow: Doctor note photo → 5-line summary + draft medicines
-- [ ] **30s** — Elder Flow: Fasting planner (Ekadashi) → per-medicine guidance
-- [ ] **30s** — Caregiver Dashboard: Adherence %, barrier breakdown, alerts, call button
-- [ ] **15s** — Accessibility: Text size toggle, high contrast, read-aloud, Hindi/English switch
+**Status:** ✅ Uploaded (90-second demo covering all 4 flows)
 
-**Suggested Platform:** Loom, YouTube (unlisted), or Google Drive  
-**Deadline:** Before hackathon submission closes
+**Coverage:**
+- Elder Home → Medicines → Why Skipped (voice) → Hindi response
+- Caregiver Dashboard: Adherence, barrier breakdown, alerts
+- Doctor Note: Paste → 5 lines + draft medicines + overlaps
+- Fasting Planner: Navratri → Per-medicine guidance with ask_doctor flags
+- Accessibility: Text size A/A+/A++, High contrast, Language switch
+
+**Platform:** Google Drive (viewable link)
 
 ---
 
