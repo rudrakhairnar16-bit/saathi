@@ -5,7 +5,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { BigButton } from '@/components/ui';
 import { getMessage } from '@/lib/messages';
 
@@ -62,6 +62,7 @@ export default function CaregiverDashboard() {
   const [pendingMedicines, setPendingMedicines] = useState<Medicine[]>([]);
   const [pendingPlans, setPendingPlans] = useState<FastingPlan[]>([]);
   const [loading, setLoading] = useState(true);
+  const [expandedAlertId, setExpandedAlertId] = useState<string | null>(null);
   const language = 'en'; // Caregiver UI in English for now
 
   useEffect(() => {
@@ -177,11 +178,157 @@ export default function CaregiverDashboard() {
     window.location.href = 'tel:+91-9876543210'; // Demo number
   };
 
+  // Sparkline helper - generates inline SVG for 7-day adherence trend
+  const generateSparkline = (data: Array<{ date: string; taken: number; total: number }>) => {
+    if (data.length === 0) return null;
+
+    const rates = data.map(d => d.total > 0 ? (d.taken / d.total) * 100 : 100);
+    const maxRate = Math.max(...rates, 100);
+    const minRate = Math.min(...rates, 0);
+    const range = maxRate - minRate || 1;
+
+    const width = 80;
+    const height = 32;
+    const padding = 2;
+    const stepX = (width - 2 * padding) / (rates.length - 1 || 1);
+
+    const points = rates.map((rate, i) => {
+      const x = padding + i * stepX;
+      const y = height - padding - ((rate - minRate) / range) * (height - 2 * padding);
+      return `${x},${y}`;
+    }).join(' ');
+
+    // Add area fill points
+    const areaPoints = [
+      `${padding},${height - padding}`,
+      ...points.split(' '),
+      `${width - padding},${height - padding}`
+    ].join(' ');
+
+    const lastRate = rates[rates.length - 1];
+    const trendColor = lastRate >= 80 ? 'var(--color-green-500)' : lastRate >= 60 ? 'var(--color-yellow-500)' : 'var(--color-red-500)';
+
+    return (
+      <svg
+        width={width}
+        height={height}
+        viewBox={`0 0 ${width} ${height}`}
+        className="ml-2 flex-shrink-0"
+        aria-hidden="true"
+        role="img"
+        aria-label={`7-day adherence trend: ${Math.round(rates[0])}% to ${Math.round(lastRate)}%`}
+      >
+        <defs>
+          <linearGradient id="sparkline-gradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor={trendColor} stopOpacity="0.3" />
+            <stop offset="100%" stopColor={trendColor} stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <path
+          d={`M${areaPoints}Z`}
+          fill="url(#sparkline-gradient)"
+        />
+        <path
+          d={`M${points}`}
+          stroke={trendColor}
+          strokeWidth="1.5"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        {/* Last point indicator */}
+        <circle
+          cx={padding + (rates.length - 1) * stepX}
+          cy={height - padding - ((lastRate - minRate) / range) * (height - 2 * padding)}
+          r="2.5"
+          fill={trendColor}
+        />
+      </svg>
+    );
+  };
+
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center h-64 gap-4">
-        <div className="animate-spin rounded-full h-8 w-8 border-4 border-[var(--color-brand-primary)] border-t-transparent" />
-        <p className="text-[var(--color-text-secondary)]">Loading dashboard...</p>
+      <div className="space-y-6 animate-pulse">
+        {/* Header Skeleton */}
+        <header className="flex items-center justify-between">
+          <div>
+            <div className="h-8 w-48 bg-[var(--color-bg-secondary)] rounded" />
+            <div className="h-4 w-32 bg-[var(--color-bg-secondary)] rounded mt-2" />
+          </div>
+          <div className="h-12 w-24 bg-[var(--color-bg-secondary)] rounded" />
+        </header>
+
+        {/* Adherence Summary Skeleton */}
+        <section className="card p-6">
+          <div className="h-6 w-48 bg-[var(--color-bg-secondary)] rounded mb-6" />
+          <div className="grid grid-cols-3 gap-4 mb-6">
+            <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-xl text-center">
+              <div className="h-10 w-16 bg-[var(--color-bg-secondary)] rounded mx-auto mb-2" />
+              <div className="h-4 w-16 bg-[var(--color-bg-secondary)] rounded mx-auto" />
+            </div>
+            <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-xl text-center">
+              <div className="h-10 w-16 bg-[var(--color-bg-secondary)] rounded mx-auto mb-2" />
+              <div className="h-4 w-16 bg-[var(--color-bg-secondary)] rounded mx-auto" />
+            </div>
+            <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl text-center">
+              <div className="h-10 w-16 bg-[var(--color-bg-secondary)] rounded mx-auto mb-2" />
+              <div className="h-4 w-16 bg-[var(--color-bg-secondary)] rounded mx-auto" />
+            </div>
+          </div>
+          <div className="space-y-2">
+            {[...Array(7)].map((_, i) => (
+              <div key={i} className="flex items-center gap-3">
+                <div className="h-4 w-24 bg-[var(--color-bg-secondary)] rounded" />
+                <div className="flex-1 h-6 bg-[var(--color-bg-secondary)] rounded-full" />
+                <div className="h-4 w-16 bg-[var(--color-bg-secondary)] rounded" />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Barrier Breakdown Skeleton */}
+        <section className="card p-6">
+          <div className="h-6 w-48 bg-[var(--color-bg-secondary)] rounded mb-4" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[...Array(7)].map((_, i) => (
+              <div key={i} className="p-3 rounded-xl bg-[var(--color-bg-secondary)]">
+                <div className="h-8 w-12 bg-[var(--color-bg-tertiary)] rounded mx-auto mb-1" />
+                <div className="h-3 w-full bg-[var(--color-bg-tertiary)] rounded" />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Alerts Skeleton */}
+        <section className="card p-6">
+          <div className="h-6 w-48 bg-[var(--color-bg-secondary)] rounded mb-4" />
+          <div className="space-y-3">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="p-4 rounded-xl bg-[var(--color-bg-secondary)] border-l-4 border-[var(--color-border)]">
+                <div className="h-4 w-3/4 bg-[var(--color-bg-tertiary)] rounded mb-2" />
+                <div className="h-3 w-1/2 bg-[var(--color-bg-tertiary)] rounded" />
+                <div className="flex gap-2 mt-3">
+                  <div className="h-10 w-24 bg-[var(--color-bg-tertiary)] rounded flex-1" />
+                  <div className="h-10 w-24 bg-[var(--color-bg-tertiary)] rounded flex-1" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Pending Confirmations Skeleton */}
+        <section className="card p-6">
+          <div className="h-6 w-48 bg-[var(--color-bg-secondary)] rounded mb-4" />
+          <div className="space-y-2">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="p-3 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-xl flex items-center justify-between">
+                <div className="h-4 w-40 bg-[var(--color-bg-tertiary)] rounded" />
+                <div className="h-10 w-24 bg-[var(--color-bg-tertiary)] rounded" />
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     );
   }
@@ -216,7 +363,10 @@ export default function CaregiverDashboard() {
 
         <div className="grid grid-cols-3 gap-4 mb-6">
           <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-xl text-center">
-            <p className="text-3xl font-bold text-green-700 dark:text-green-300">{adherenceRate}%</p>
+            <div className="flex items-center justify-center gap-1">
+              <p className="text-3xl font-bold text-green-700 dark:text-green-300">{adherenceRate}%</p>
+              {generateSparkline(adherence)}
+            </div>
             <p className="text-sm text-green-600 dark:text-green-400">Taken</p>
           </div>
           <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-xl text-center">
@@ -297,7 +447,25 @@ export default function CaregiverDashboard() {
                 role="listitem"
               >
                 <div className="flex-1">
-                  <p className="text-[var(--color-text-primary)]">{alert.reason}</p>
+                  <div className="relative">
+                    <p
+                      className={`text-[var(--color-text-primary)] line-clamp-2 transition-all ${
+                        expandedAlertId === alert.id ? 'line-clamp-none' : ''
+                      }`}
+                      onClick={() => setExpandedAlertId(expandedAlertId === alert.id ? null : alert.id)}
+                      style={{ cursor: expandedAlertId === alert.id || alert.reason.length <= 80 ? 'default' : 'pointer' }}
+                    >
+                      {alert.reason}
+                    </p>
+                    {expandedAlertId === alert.id && (
+                      <div
+                        className="absolute z-10 bottom-full left-0 right-0 mb-2 p-3 bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-lg shadow-lg text-sm text-[var(--color-text-primary)]"
+                        role="tooltip"
+                      >
+                        {alert.reason}
+                      </div>
+                    )}
+                  </div>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1">
                     {new Date(alert.createdAt).toLocaleString()}
                   </p>
