@@ -1,6 +1,0 @@
-file 'demo-elderhome.mp4'
-file 'demo-medicines.mp4'
-file 'demo-whyskipped.mp4'
-file 'demo-caregiverdashboard.mp4'
-file 'demo-doctornote.mp4'
-file 'demo-fastingplanner.mp4'
