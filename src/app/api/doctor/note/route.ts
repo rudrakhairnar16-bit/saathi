@@ -11,6 +11,7 @@ import { findOverlaps } from '@/lib/overlap';
 import { getClientIP } from '@/lib/security';
 import { getMessage } from '@/lib/messages';
 import { v4 as uuidv4 } from 'uuid';
+import { DrugClass } from '@/types';
 
 const DoctorNoteSchema = z.object({
   elderId: z.string().min(1),
@@ -84,7 +85,7 @@ export async function POST(request: NextRequest) {
       ...m,
       id: `med_${generateId()}`,
       elderId,
-      drugClass: m.drugClass as any,
+      drugClass: m.drugClass as DrugClass,
       status: 'draft' as const,
     }));
 

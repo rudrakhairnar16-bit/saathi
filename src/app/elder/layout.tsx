@@ -36,25 +36,28 @@ interface ElderProviderProps {
 }
 
 export function ElderProvider({ children }: ElderProviderProps) {
-  const [language, setLanguage] = useState<Language>('en');
-  const [textSize, setTextSize] = useState<TextSize>('medium');
-  const [highContrast, setHighContrast] = useState(false);
+  const [language, setLanguage] = useState<Language>(() => {
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem('saathi_language') as Language | null) || 'en';
+    }
+    return 'en';
+  });
+  const [textSize, setTextSize] = useState<TextSize>(() => {
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem('saathi_text_size') as TextSize | null) || 'medium';
+    }
+    return 'medium';
+  });
+  const [highContrast, setHighContrast] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('saathi_high_contrast') === 'true';
+    }
+    return false;
+  });
   const [mounted, setMounted] = useState(false);
 
-  // Load preferences from localStorage
   useEffect(() => {
     setMounted(true);
-    try {
-      const storedLang = localStorage.getItem('saathi_language') as Language | null;
-      const storedSize = localStorage.getItem('saathi_text_size') as TextSize | null;
-      const storedContrast = localStorage.getItem('saathi_high_contrast');
-
-      if (storedLang) setLanguage(storedLang);
-      if (storedSize) setTextSize(storedSize);
-      if (storedContrast === 'true') setHighContrast(true);
-    } catch {
-      // ignore
-    }
   }, []);
 
   // Apply text size to document

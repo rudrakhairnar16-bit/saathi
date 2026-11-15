@@ -56,27 +56,28 @@
 
 ---
 
-## 🔴 Major Issues (Must Fix)
+## 🔴 Major Issues (Must Fix) — **FIXED ✅**
 
-### 1. Voice Input Failure for Low-Tech Elders
+### 1. Voice Input Failure for Low-Tech Elders — **FIXED**
 **Users affected:** Kamla Ben, Sunita Devi  
 **Task:** "Tap Skipped → select reason via voice (Hindi)"  
 **Problem:** Voice recognition fails intermittently, forcing fallback to tap cards  
 **Impact:** High — primary input method for non-literate users  
-**Suggested Fix:** 
-- Add visual fallback prompt immediately: "Voice not working? Tap a reason below"
-- Increase timeout for speech recognition
-- Test with real device microphones (not browser simulation)
+**Fix Applied:** 
+- Added visual fallback prompt on recognition error: "Voice not recognized — No problem, tap a reason button below instead" (Hindi: "आवाज़ नहीं पहचानी गई — कोई बात नहीं, नीचे दिए बटन दबाकर कारण चुनें")
+- Auto-dismiss after 8 seconds
+- Dismissed when user taps a reason card
+- Tested in production: https://1-xi-swart.vercel.app/elder/why-skipped
 
-### 2. Text Size Toggle Not Discoverable
+### 2. Text Size Toggle Not Discoverable — **FIXED**
 **User affected:** Geeta Bai (73, low tech)  
 **Task:** "Switch text size A → A+ → A++"  
 **Problem:** Could not find the text size control in header  
 **Impact:** High — accessibility feature hidden from users who need it most  
-**Suggested Fix:**
-- Add label "Text Size" next to A/A+/A++ buttons
-- Consider persistent footer button on elder pages
-- Add onboarding tooltip on first visit
+**Fix Applied:**
+- Label "Text Size:" now always visible (removed `hidden sm:block`)
+- Added tooltips: 'Normal text size', 'Larger text', 'Largest text' (Hindi: 'सामान्य आकार', 'बड़ा टेक्स्ट', 'सबसे बड़ा टेक्स्ट')
+- Tested in production: https://1-xi-swart.vercel.app/elder
 
 ---
 

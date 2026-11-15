@@ -45,13 +45,13 @@ export default function WhySkipped() {
   // Initialize speech recognition
   useEffect(() => {
     if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+      const SpeechRecognition = (window as Window & { SpeechRecognition: any; webkitSpeechRecognition: any }).SpeechRecognition || (window as Window & { SpeechRecognition: any; webkitSpeechRecognition: any }).webkitSpeechRecognition;
       const rec = new SpeechRecognition();
       rec.lang = language === 'hi' ? 'hi-IN' : 'en-IN';
       rec.continuous = false;
       rec.interimResults = true;
 
-      rec.onresult = (event: any) => {
+      rec.onresult = (event: SpeechRecognitionEvent) => {
         let transcript = '';
         for (let i = event.resultIndex; i < event.results.length; i++) {
           transcript += event.results[i][0].transcript;
@@ -59,7 +59,7 @@ export default function WhySkipped() {
         setCustomText(transcript);
       };
 
-      rec.onerror = (event: any) => {
+      rec.onerror = (event: SpeechRecognitionErrorEvent) => {
         setListening(false);
         // Show fallback prompt on any error (no mic, permission denied, network, etc.)
         if (!customText.trim()) {

@@ -41,6 +41,14 @@ interface DoseEvent {
   actedAt?: string;
 }
 
+interface SkipAction {
+  elderMessage: string;
+  caregiverAlert?: string;
+  doctorNote?: string;
+  reminderShiftMinutes?: number;
+  refillAlert?: string;
+}
+
 interface SkipReport {
   id: string;
   doseEventId: string;
@@ -50,7 +58,7 @@ interface SkipReport {
   category: string;
   confidence: number;
   redFlag: boolean;
-  action: any;
+  action: SkipAction;
   source: string;
   createdAt: string;
 }
