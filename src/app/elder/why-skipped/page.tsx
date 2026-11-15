@@ -35,6 +35,7 @@ export default function WhySkipped() {
   const [customText, setCustomText] = useState('');
   const [listening, setListening] = useState(false);
   const [recognition, setRecognition] = useState<SpeechRecognition | null>(null);
+  const [voiceError, setVoiceError] = useState(false);
   const [action, setAction] = useState<SkipReasonAction | null>(null);
   const [redFlag, setRedFlag] = useState(false);
   const messages = getAllMessages(language);
@@ -58,12 +59,23 @@ export default function WhySkipped() {
         setCustomText(transcript);
       };
 
-      rec.onerror = () => {
+      rec.onerror = (event: any) => {
         setListening(false);
+        // Show fallback prompt on any error (no mic, permission denied, network, etc.)
+        if (!customText.trim()) {
+          setVoiceError(true);
+          // Auto-hide after 8 seconds
+          setTimeout(() => setVoiceError(false), 8000);
+        }
       };
 
       rec.onend = () => {
         setListening(false);
+        // If no transcript captured, show fallback
+        if (!customText.trim() && !voiceError) {
+          setVoiceError(true);
+          setTimeout(() => setVoiceError(false), 8000);
+        }
       };
 
       setRecognition(rec);
@@ -87,6 +99,7 @@ export default function WhySkipped() {
 
   const handleReasonSelect = (reason: SkipReason) => {
     setSelectedReason(reason);
+    setVoiceError(false); // Dismiss fallback when user taps a card
     // Auto-advance to confirm after selection
     setTimeout(() => setStep('confirm'), 300);
   };
@@ -215,6 +228,30 @@ export default function WhySkipped() {
               {getMessage('readAloud', language)}
             </BigButton>
           </div>
+
+          {/* Voice Fallback Prompt - shows when recognition fails */}
+          {voiceError && !customText.trim() && (
+            <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-xl flex items-start gap-3 animate-pulse">
+              <span className="text-2xl" aria-hidden="true">💡</span>
+              <div className="flex-1">
+                <p className="font-medium text-yellow-800 dark:text-yellow-200">
+                  {language === 'hi' ? 'आवाज़ नहीं पहचानी गई' : 'Voice not recognized'}
+                </p>
+                <p className="text-sm text-yellow-700 dark:text-yellow-300 mt-1">
+                  {language === 'hi'
+                    ? 'कोई बात नहीं — नीचे दिए बटन दबाकर कारण चुनें'
+                    : 'No problem — tap a reason button below instead'}
+                </p>
+              </div>
+              <button
+                onClick={() => setVoiceError(false)}
+                className="text-yellow-600 dark:text-yellow-400 hover:text-yellow-800 font-bold text-xl leading-none p-1"
+                aria-label={language === 'hi' ? 'बंद करें' : 'Dismiss'}
+              >
+                ×
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Tap Cards */}
