@@ -15,7 +15,10 @@ let useSupabase = false;
 let repositoryInstance: Repository | null = null;
 
 function hasSupabaseConfig(): boolean {
-  return !!(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+  const hasUrl = !!process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const hasKey = !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  console.log('[DB Factory] hasSupabaseConfig:', { hasUrl, hasKey, urlPrefix: process.env.NEXT_PUBLIC_SUPABASE_URL?.slice(0, 30) });
+  return hasUrl && hasKey;
 }
 
 export async function getRepository(): Promise<Repository> {
