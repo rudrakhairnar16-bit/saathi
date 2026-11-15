@@ -10,6 +10,7 @@ import { processDoctorNote } from '@/lib/ai';
 import { findOverlaps } from '@/lib/overlap';
 import { getClientIP } from '@/lib/security';
 import { getMessage } from '@/lib/messages';
+import { v4 as uuidv4 } from 'uuid';
 
 const DoctorNoteSchema = z.object({
   elderId: z.string().min(1),
@@ -17,11 +18,15 @@ const DoctorNoteSchema = z.object({
   language: z.enum(['en', 'hi']).default('en'),
 });
 
+function generateId(): string {
+  return uuidv4().slice(0, 8);
+}
+
 export async function POST(request: NextRequest) {
   try {
     // Rate limit
     const ip = getClientIP(request);
-    const { allowed, retryAfter } = (await import('@/lib/security')).aiRateLimiter(ip);
+    const { allowed, retryAfter } = (await import('@/lib/security')).aiRateLimiterCheck(ip);
     if (!allowed) {
       return NextResponse.json(
         {
@@ -74,27 +79,24 @@ export async function POST(request: NextRequest) {
       ip
     );
 
+    // Create draft medicines with proper IDs (same ID for overlap check and visit note)
+    const draftMedicines = result.draftMedicines.map(m => ({
+      ...m,
+      id: `med_${generateId()}`,
+      elderId,
+      drugClass: m.drugClass as any,
+      status: 'draft' as const,
+    }));
+
     // Create visit note
     const visitNote = await repo.createVisitNote({
-      id: `vn_${Date.now()}`,
+      id: `vn_${generateId()}`,
       elderId,
       rawText: text,
       simpleLines: result.simpleLines,
-      draftMedicines: result.draftMedicines.map(m => ({
-        ...m,
-        id: `med_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
-        elderId,
-        drugClass: m.drugClass as any,
-        status: 'draft' as const,
-      })),
-      overlaps: result.draftMedicines.length > 0
-        ? findOverlaps([...existingMedicines, ...result.draftMedicines.map(m => ({
-            ...m,
-            id: `med_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
-            elderId,
-            drugClass: m.drugClass as any,
-            status: 'draft' as const,
-          }))])
+      draftMedicines,
+      overlaps: draftMedicines.length > 0
+        ? findOverlaps([...existingMedicines, ...draftMedicines])
         : [],
       source: result.source,
       createdAt: new Date().toISOString(),
@@ -128,8 +130,8 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('[API] /doctor/note error:', error);
 
-    if (error instanceof Error && error.message.startsWith('RATE_LIMITED:')) {
-      const [, retryAfter, message] = error.message.split(':');
+    if (error instanceof Error && error.message.startsWith('RATE_LIMITED|')) {
+      const [, retryAfter, message] = error.message.split('|');
       return NextResponse.json(
         { error: 'rate_limited', message, retryAfter: parseInt(retryAfter) },
         { status: 429, headers: { 'Retry-After': retryAfter } }

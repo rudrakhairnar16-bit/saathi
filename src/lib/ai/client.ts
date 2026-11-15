@@ -25,6 +25,7 @@ import {
   getRateLimitFallback,
   getGenericAIFallback,
 } from './fallbacks';
+import { aiRateLimiterCheck } from '@/lib/security/rateLimit';
 
 // ============================================================================
 // Configuration
@@ -33,11 +34,6 @@ import {
 const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
-// In-memory rate limiter (per IP)
-const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
-const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
-const RATE_LIMIT_MAX_REQUESTS = 20; // per window
-
 // ============================================================================
 // Client Initialization
 // ============================================================================
@@ -45,28 +41,6 @@ const RATE_LIMIT_MAX_REQUESTS = 20; // per window
 function getClient(): GoogleGenAI | null {
   if (!GEMINI_API_KEY) return null;
   return new GoogleGenAI({ apiKey: GEMINI_API_KEY });
-}
-
-// ============================================================================
-// Rate Limiting
-// ============================================================================
-
-export function checkRateLimit(ip: string): { allowed: boolean; retryAfter?: number } {
-  const now = Date.now();
-  const record = rateLimitMap.get(ip);
-
-  if (!record || now > record.resetAt) {
-    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
-    return { allowed: true };
-  }
-
-  if (record.count >= RATE_LIMIT_MAX_REQUESTS) {
-    const retryAfter = Math.ceil((record.resetAt - now) / 1000);
-    return { allowed: false, retryAfter };
-  }
-
-  record.count++;
-  return { allowed: true };
 }
 
 // ============================================================================
@@ -95,10 +69,10 @@ export async function classifyBarrier(
 }> {
   // Rate limit check
   if (ip) {
-    const { allowed, retryAfter } = checkRateLimit(ip);
+    const { allowed, retryAfter } = aiRateLimiterCheck(ip);
     if (!allowed) {
       const fallback = getRateLimitFallback(input.language);
-      throw new Error(`RATE_LIMITED:${retryAfter}:${fallback.message}`);
+      throw new Error(`RATE_LIMITED|${retryAfter}|${fallback.message}`);
     }
   }
 
@@ -177,10 +151,10 @@ export async function processDoctorNote(
   source: AISource;
 }> {
   if (ip) {
-    const { allowed, retryAfter } = checkRateLimit(ip);
+    const { allowed, retryAfter } = aiRateLimiterCheck(ip);
     if (!allowed) {
       const fallback = getRateLimitFallback(input.language);
-      throw new Error(`RATE_LIMITED:${retryAfter}:${fallback.message}`);
+      throw new Error(`RATE_LIMITED|${retryAfter}|${fallback.message}`);
     }
   }
 
@@ -329,10 +303,10 @@ export async function enhanceFastingPlan(
   source: AISource;
 }> {
   if (ip) {
-    const { allowed, retryAfter } = checkRateLimit(ip);
+    const { allowed, retryAfter } = aiRateLimiterCheck(ip);
     if (!allowed) {
       const fallback = getRateLimitFallback(input.language);
-      throw new Error(`RATE_LIMITED:${retryAfter}:${fallback.message}`);
+      throw new Error(`RATE_LIMITED|${retryAfter}|${fallback.message}`);
     }
   }
 

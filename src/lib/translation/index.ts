@@ -42,12 +42,18 @@ class TranslationService {
         q: text,
       });
 
+      // Add timeout to prevent hanging on unofficial endpoint
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
+
       const response = await fetch(`${GOOGLE_TRANSLATE_URL}?${params}`, {
         method: 'GET',
         headers: {
           'User-Agent': 'Mozilla/5.0 (compatible; Saathi/1.0)',
         },
+        signal: controller.signal,
       });
+      clearTimeout(timeoutId);
 
       if (!response.ok) {
         throw new Error(`Translation API error: ${response.status}`);

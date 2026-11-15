@@ -7,12 +7,17 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { getRepository } from '@/lib/db';
 import { getMessage } from '@/lib/messages';
+import { v4 as uuidv4 } from 'uuid';
 
 const ConfirmMedicineSchema = z.object({
   medicineId: z.string().min(1),
   elderId: z.string().min(1),
   confirmedBy: z.string().min(1), // Person ID (caregiver/doctor)
 });
+
+function generateId(): string {
+  return uuidv4().slice(0, 8);
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -61,9 +66,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create dose events for the newly confirmed medicine
+    // Create dose events for the newly confirmed medicine (check existing first)
     const today = new Date();
     today.setHours(0, 0, 0, 0);
+
+    // Check for existing dose events to avoid duplicates
+    const existingEvents = await repo.getDoseEventsByElder(elderId, today, new Date(today.getTime() + 14 * 86400000));
+    const existingKeys = new Set(existingEvents.map(e => `${e.medicineId}|${e.scheduledAt}`));
 
     for (let dayOffset = 0; dayOffset < 14; dayOffset++) { // 2 weeks ahead
       const date = new Date(today);
@@ -73,12 +82,18 @@ export async function POST(request: NextRequest) {
         const [hours, minutes] = timeStr.split(':').map(Number);
         const scheduledAt = new Date(date);
         scheduledAt.setHours(hours, minutes, 0, 0);
+        const scheduledAtISO = scheduledAt.toISOString();
+
+        const key = `${confirmed.id}|${scheduledAtISO}`;
+        if (existingKeys.has(key)) {
+          continue; // Skip duplicate
+        }
 
         await repo.createDoseEvent({
-          id: `de_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
+          id: `de_${generateId()}`,
           medicineId: confirmed.id,
           elderId,
-          scheduledAt: scheduledAt.toISOString(),
+          scheduledAt: scheduledAtISO,
           status: 'pending',
         });
       }

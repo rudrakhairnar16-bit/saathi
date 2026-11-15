@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
   try {
     // Rate limit
     const ip = getClientIP(request);
-    const { allowed, retryAfter } = (await import('@/lib/security')).aiRateLimiter(ip);
+    const { allowed, retryAfter } = (await import('@/lib/security')).aiRateLimiterCheck(ip);
     if (!allowed) {
       return NextResponse.json(
         {
@@ -143,8 +143,8 @@ export async function POST(request: NextRequest) {
     console.error('[API] /dose/skip error:', error);
 
     // Handle rate limit errors from AI
-    if (error instanceof Error && error.message.startsWith('RATE_LIMITED:')) {
-      const [, retryAfter, message] = error.message.split(':');
+    if (error instanceof Error && error.message.startsWith('RATE_LIMITED|')) {
+      const [, retryAfter, message] = error.message.split('|');
       return NextResponse.json(
         { error: 'rate_limited', message, retryAfter: parseInt(retryAfter) },
         { status: 429, headers: { 'Retry-After': retryAfter } }

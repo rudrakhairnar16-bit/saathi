@@ -204,10 +204,30 @@ export function isRedFlag(text: string, language: Language): boolean {
     : language === 'en' ? [RED_FLAG_SYMPTOMS.en, RED_FLAG_SYMPTOMS.mixed]
     : [RED_FLAG_SYMPTOMS.en, RED_FLAG_SYMPTOMS.hi, RED_FLAG_SYMPTOMS.mixed];
 
+  // Tokenize input for word-boundary matching (reduces false positives like "chest pain relief")
+  const tokens = normalized.split(/\s+/);
+
   for (const list of lists) {
     for (const symptom of list) {
-      if (normalized.includes(symptom.toLowerCase())) {
-        return true;
+      const symptomLower = symptom.toLowerCase();
+      const symptomTokens = symptomLower.split(/\s+/);
+
+      if (symptomTokens.length === 1) {
+        // Single word: check exact token match
+        if (tokens.includes(symptomLower)) {
+          return true;
+        }
+      } else {
+        // Multi-word: check if all tokens appear in order (allowing small gaps for typos)
+        let matchIndex = 0;
+        for (const token of tokens) {
+          if (matchIndex < symptomTokens.length && token.includes(symptomTokens[matchIndex])) {
+            matchIndex++;
+          }
+        }
+        if (matchIndex === symptomTokens.length) {
+          return true;
+        }
       }
     }
   }

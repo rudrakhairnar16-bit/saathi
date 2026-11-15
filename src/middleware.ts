@@ -5,13 +5,13 @@
 
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { getClientIP, globalRateLimiter } from '@/lib/security';
+import { getClientIP, checkRateLimit } from '@/lib/security';
 
 export function middleware(request: NextRequest) {
   const ip = getClientIP(request);
 
   // Apply global rate limiting
-  const { allowed, remaining, resetAt } = globalRateLimiter(ip);
+  const { allowed, remaining, resetAt } = checkRateLimit(ip);
 
   const response = NextResponse.next();
 

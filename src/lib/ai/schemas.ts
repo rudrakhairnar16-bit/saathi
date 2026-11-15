@@ -52,7 +52,7 @@ export const DraftMedicineSchema = z.object({
 });
 
 export const DoctorNoteSchema = z.object({
-  simpleLines: z.array(z.string().max(160)).length(5),
+  simpleLines: z.array(z.string().max(160)).min(3).max(7),
   draftMedicines: z.array(DraftMedicineSchema).max(10),
   language: z.enum(['en', 'hi']),
 });

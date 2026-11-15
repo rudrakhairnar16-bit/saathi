@@ -8,7 +8,10 @@ interface RateLimitRecord {
   resetAt: number;
 }
 
-const rateLimitStore = new Map<string, RateLimitRecord>();
+interface RateLimiter {
+  check: (identifier: string) => RateLimitResult;
+  store: Map<string, RateLimitRecord>;
+}
 
 export interface RateLimitConfig {
   windowMs: number;
@@ -32,10 +35,10 @@ const AI_ROUTE_CONFIG: RateLimitConfig = {
   maxRequests: 10, // Stricter for AI calls
 };
 
-export function createRateLimiter(config: RateLimitConfig = DEFAULT_CONFIG) {
+function createRateLimiter(config: RateLimitConfig = DEFAULT_CONFIG): RateLimiter {
   const store = new Map<string, RateLimitRecord>();
 
-  return function checkRateLimit(identifier: string): RateLimitResult {
+  function checkRateLimit(identifier: string): RateLimitResult {
     const now = Date.now();
     const record = store.get(identifier);
 
@@ -64,7 +67,9 @@ export function createRateLimiter(config: RateLimitConfig = DEFAULT_CONFIG) {
       remaining: config.maxRequests - record.count,
       resetAt: record.resetAt,
     };
-  };
+  }
+
+  return { check: checkRateLimit, store };
 }
 
 // Global rate limiter instances
@@ -75,14 +80,11 @@ export const aiRateLimiter = createRateLimiter(AI_ROUTE_CONFIG);
 if (typeof setInterval !== 'undefined') {
   setInterval(() => {
     const now = Date.now();
-    for (const [key, record] of rateLimitStore.entries()) {
-      if (now > record.resetAt) {
-        rateLimitStore.delete(key);
-      }
-    }
-    for (const [key, record] of (globalRateLimiter as any).store?.entries() || []) {
-      if (now > record.resetAt) {
-        (globalRateLimiter as any).store?.delete(key);
+    for (const limiter of [globalRateLimiter, aiRateLimiter]) {
+      for (const [key, record] of limiter.store.entries()) {
+        if (now > record.resetAt) {
+          limiter.store.delete(key);
+        }
       }
     }
   }, 5 * 60 * 1000);
@@ -99,3 +101,7 @@ export function getClientIP(request: Request): string {
   if (realIP) return realIP;
   return 'unknown';
 }
+
+// Re-export check functions for backward compatibility
+export const checkRateLimit = globalRateLimiter.check;
+export const aiRateLimiterCheck = aiRateLimiter.check;

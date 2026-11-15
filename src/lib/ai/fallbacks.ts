@@ -87,26 +87,30 @@ export function buildDoctorNoteFallback(input: DoctorNoteFallbackInput): {
     simpleLines.push('Doctor has prescribed new medicines.');
   }
 
-  // Line 2-4: Key points (simplified)
+  // Line 2-4: Key points (simplified) - use a set to avoid duplicates
+  const addedLines = new Set<string>();
+
   if (textLower.includes('bp') || textLower.includes('blood pressure') || textLower.includes('रक्तचाप')) {
-    simpleLines.push(language === 'hi' ? 'रक्तचाप (BP) की दवा शुरू/बदली गई है।' : 'Blood pressure medicine started/changed.');
+    const line = language === 'hi' ? 'रक्तचाप (BP) की दवा शुरू/बदली गई है।' : 'Blood pressure medicine started/changed.';
+    if (!addedLines.has(line)) { simpleLines.push(line); addedLines.add(line); }
   }
   if (textLower.includes('sugar') || textLower.includes('diabetes') || textLower.includes('शुगर') || textLower.includes('मधुमेह')) {
-    simpleLines.push(language === 'hi' ? 'शुगर (मधुमेह) की दवा में बदलाव है।' : 'Diabetes medicine has been changed.');
+    const line = language === 'hi' ? 'शुगर (मधुमेह) की दवा में बदलाव है।' : 'Diabetes medicine has been changed.';
+    if (!addedLines.has(line)) { simpleLines.push(line); addedLines.add(line); }
   }
   if (textLower.includes('heart') || textLower.includes('दिल') || textLower.includes('cardiac')) {
-    simpleLines.push(language === 'hi' ? 'दिल की दवा बताई गई है।' : 'Heart medicine prescribed.');
+    const line = language === 'hi' ? 'दिल की दवा बताई गई है।' : 'Heart medicine prescribed.';
+    if (!addedLines.has(line)) { simpleLines.push(line); addedLines.add(line); }
   }
 
-  // Pad to 5 lines
-  while (simpleLines.length < 5) {
-    if (language === 'hi') {
-      simpleLines.push('अपनी सभी दवाएं समय पर लें।');
-      simpleLines.push('कुछ भी अजीब लगे तो डॉक्टर को बताएं।');
-    } else {
-      simpleLines.push('Take all medicines on time.');
-      simpleLines.push('Tell your doctor if anything feels wrong.');
-    }
+  // Pad to 5 lines with unique generic lines
+  const genericLines = language === 'hi'
+    ? ['अपनी सभी दवाएं समय पर लें।', 'कुछ भी अजीब लगे तो डॉक्टर को बताएं।', 'दवा लेना न भूलें।', 'खाना खाने के बाद दवा लें।', 'पानी के साथ दवा निगलें।']
+    : ['Take all medicines on time.', 'Tell your doctor if anything feels wrong.', 'Do not forget your medicine.', 'Take medicine after eating.', 'Swallow medicine with water.'];
+
+  for (const line of genericLines) {
+    if (simpleLines.length >= 5) break;
+    if (!addedLines.has(line)) { simpleLines.push(line); addedLines.add(line); }
   }
 
   // Truncate to exactly 5
@@ -140,16 +144,29 @@ export function buildFastingPlanFallback(
   elderId: string,
   occasion: string,
   date: string,
-  medicines: Medicine[],
+  medicines: Array<{ id: string; name: string; drugClass: string; guidance: string; reason: string; askDoctor: string }>,
   language: Language
 ): { plan: FastingPlan; entries: FastingPlanEntry[] } {
-  return buildFastingPlan({
+  // Convert the AI input format back to the buildPlan input format
+  const planInput = {
     elderId,
     occasion: occasion as any,
     date,
-    medicines,
+    medicines: medicines.map(m => ({
+      id: m.id,
+      elderId,
+      name: m.name,
+      activeIngredient: m.name, // fallback
+      drugClass: m.drugClass as any,
+      doseText: '',
+      times: [],
+      withFood: false,
+      prescribedBy: 'Unknown',
+      status: 'active' as const,
+    })),
     language,
-  });
+  };
+  return buildFastingPlan(planInput);
 }
 
 // ============================================================================

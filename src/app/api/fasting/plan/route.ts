@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
   try {
     // Rate limit
     const ip = getClientIP(request);
-    const { allowed, retryAfter } = (await import('@/lib/security')).aiRateLimiter(ip);
+    const { allowed, retryAfter } = (await import('@/lib/security')).aiRateLimiterCheck(ip);
     if (!allowed) {
       return NextResponse.json(
         {
@@ -64,13 +64,13 @@ export async function POST(request: NextRequest) {
     }
 
     // Build plan with AI enhancement (with fallback)
-    const basePlan = await import('@/lib/fasting').then(m => m.buildFastingPlan({
+    const basePlan = buildFastingPlan({
       elderId,
       occasion,
       date,
       medicines: activeMedicines,
       language,
-    }));
+    });
 
     const enhanced = await enhanceFastingPlan(
       {
@@ -127,8 +127,8 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('[API] /fasting/plan error:', error);
 
-    if (error instanceof Error && error.message.startsWith('RATE_LIMITED:')) {
-      const [, retryAfter, message] = error.message.split(':');
+    if (error instanceof Error && error.message.startsWith('RATE_LIMITED|')) {
+      const [, retryAfter, message] = error.message.split('|');
       return NextResponse.json(
         { error: 'rate_limited', message, retryAfter: parseInt(retryAfter) },
         { status: 429, headers: { 'Retry-After': retryAfter } }
